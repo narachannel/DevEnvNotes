@@ -72,8 +72,8 @@ docker run -p 7474:7474 -p 7687:7687 --volume="C:\ContainerData\neo4j:/data" neo
 
 ## Cassandra
 
-http://cassandra.apache.org/doc/latest/getting_started/index.html
-https://hub.docker.com/_/cassandra?tab=description
+[Official](http://cassandra.apache.org/doc/latest/getting_started/index.html)
+[Docker Hub](https://hub.docker.com/_/cassandra?tab=description)
 
 ```sh
 docker run --name docker-cassandra -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 -d cassandra:latest
@@ -93,6 +93,6 @@ Clone repo from [Github](https://github.com/wurstmeister/kafka-docker)
 docker-compose up -d
 ```
 
-## Cochroach DB
+## Cockroach DB
 
-https://www.cockroachlabs.com/docs/stable/start-a-local-cluster-in-docker.html
+[Official](https://www.cockroachlabs.com/docs/stable/start-a-local-cluster-in-docker.html)

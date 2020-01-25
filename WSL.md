@@ -1,11 +1,12 @@
 # WSL Setup(Ubuntu)
 
+Install script for Ubuntu 18.04
+
 ## SSH Keygen with ED25519
 
 ```sh
 ssh-keygen -t ed25519 -P "SOMEPASSPHRASE"  -C "github"
 ```
-https://qiita.com/q1701/items/3cdc2d7ef7a3539f351d
 
 ## Az
 
@@ -13,13 +14,17 @@ https://qiita.com/q1701/items/3cdc2d7ef7a3539f351d
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-## Dotnet
+## Dotnet and Function Core Tools
+
+[Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1804)
+[Github](https://github.com/Azure/azure-functions-core-tools)
 
 ```sh
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
+sudo add-apt-repository universe
 sudo apt-get update
-sudo apt-get install dotnet-sdk-2.2
+sudo apt-get install dotnet-sdk-3.1 azure-functions-core-tools
 ```
 
 ## Nodejs
@@ -67,10 +72,17 @@ echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 pip install --user docker-compose
 ```
 
+If you've already been trying Windows Insider build version, WSL 2 is available.
+[Docker](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)
+
 ## Helm
 
+[Official](https://helm.sh/docs/intro/install/)
+
 ```sh
-curl -L https://git.io/get_helm.sh | bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 ## Go
@@ -84,16 +96,6 @@ sudo apt-get install golang-go
 ```sh
 curl https://sh.rustup.rs -sSf | sh
 export PATH=~/.cargo/bin:$PATH
-```
-
-## Azure Functions Tool
-
-```sh
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
-sudo apt-get install azure-functions-core-tools
 ```
 
 ## Lazy Docker
@@ -110,7 +112,7 @@ docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/wo
 
 ## gcloud
 
-https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
+[Official Document](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
 
 ```sh
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list

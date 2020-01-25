@@ -5,3 +5,5 @@
 ## WSL / Linux set up scripts
 
 ## Middleware
+
+## Shortcuts
