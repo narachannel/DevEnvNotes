@@ -92,3 +92,7 @@ Clone repo from [Github](https://github.com/wurstmeister/kafka-docker)
 ```sh
 docker-compose up -d
 ```
+
+## Cochroach DB
+
+https://www.cockroachlabs.com/docs/stable/start-a-local-cluster-in-docker.html
