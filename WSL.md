@@ -2,19 +2,17 @@
 
 Install script for Ubuntu 18.04
 
-## SSH Keygen with ED25519
+## Environments
+
+### SSH Keygen with ED25519
 
 ```sh
 ssh-keygen -t ed25519 -P "SOMEPASSPHRASE"  -C "github"
 ```
 
-## Az
+## Programing Language
 
-```sh
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-```
-
-## Dotnet and Function Core Tools
+### Dotnet and Function Core Tools
 
 [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1804)
 [Github](https://github.com/Azure/azure-functions-core-tools)
@@ -27,14 +25,14 @@ sudo apt-get update
 sudo apt-get install dotnet-sdk-3.1 azure-functions-core-tools
 ```
 
-## Nodejs
+### Nodejs
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-## Python with Pyenv
+### Python with Pyenv
 
 ```sh
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -47,7 +45,42 @@ pyenv install anaconda3-2019.03
 pyenv local anaconda3-2019.03
 ```
 
-## Kubectl
+### Go
+
+```sh
+sudo apt-get install golang-go
+```
+
+### Rust
+
+```sh
+curl https://sh.rustup.rs -sSf | sh
+export PATH=~/.cargo/bin:$PATH
+```
+
+### Ruby
+
+rbenv[Github](https://github.com/rbenv/rbenv)
+
+```sh
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo "$(rbenv init -)" >> ~/.bashrc
+source ~/.bashrc
+which rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+rbenv install --list
+rbenv install 2.5.7
+rbenv local 2.5.7
+```
+
+## Container Tools
+
+### Kubectl
 
 ```sh
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -58,7 +91,7 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 source ~/.bashrc
 ```
 
-## Docker
+### Docker
 
 See [this](https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly)
 
@@ -75,7 +108,7 @@ pip install --user docker-compose
 If you've already been trying Windows Insider build version, WSL 2 is available.
 [Docker](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)
 
-## Helm
+### Helm
 
 [Official](https://helm.sh/docs/intro/install/)
 
@@ -85,32 +118,37 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-## Go
-
-```sh
-sudo apt-get install golang-go
-```
-
-## Rust
-
-```sh
-curl https://sh.rustup.rs -sSf | sh
-export PATH=~/.cargo/bin:$PATH
-```
-
-## Lazy Docker
+### Lazy Docker
 
 ```sh
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 ```
 
-## Jupyter Notebook on Docker
+### Jupyter Notebook on Docker
 
 ```sh
 docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook:latest
 ```
 
-## gcloud
+### Skaffold
+
+[Page](https://skaffold.dev/docs/install/)
+
+```sh
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+chmod +x skaffold
+sudo mv skaffold /usr/local/bin
+```
+
+## Cloud Tools
+
+### Az
+
+```sh
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+
+### gcloud
 
 [Official Document](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
 
