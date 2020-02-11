@@ -95,8 +95,8 @@ https://k-miyake.github.io/blog/docker-k8s-mysql/
 ## Local Dashboard Configuration
 
 ```sh
- kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml 
- kubectl -n kube-system edit service kubernetes-dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml 
+kubectl -n kube-system edit service kubernetes-dashboard
 ```
 
 ```diff:kybernetes-dashboard.yaml

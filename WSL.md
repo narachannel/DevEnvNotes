@@ -113,9 +113,17 @@ If you've already been trying Windows Insider build version, WSL 2 is available.
 [Official](https://helm.sh/docs/intro/install/)
 
 ```sh
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+```
+
+### Istio
+
+[Official](https://istio.io/docs/setup/getting-started/)
+
+```sh
+curl -L https://istio.io/downloadIstio | sh -
+sudo mv istio-v-xx/bin/* /usr/local/bin
+source ~/istioctl.bash
 ```
 
 ### Lazy Docker
@@ -140,6 +148,17 @@ chmod +x skaffold
 sudo mv skaffold /usr/local/bin
 ```
 
+### Dapr
+
+[Github](https://github.com/dapr/cli)
+
+```shell
+wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash
+dapr init # stand alone
+docker network create dapr-network && dapr init --network dapr-network # docker
+dapr init --kubernetes # k8s
+```
+
 ## Cloud Tools
 
 ### Az
@@ -157,4 +176,13 @@ echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk
 gcloud init
+```
+
+### aws-cli
+
+[Github](https://github.com/aws/aws-cli)
+
+```sh
+sudo pip install awscli
+aws configure
 ```
