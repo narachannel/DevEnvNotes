@@ -152,11 +152,20 @@ sudo mv skaffold /usr/local/bin
 
 [Github](https://github.com/dapr/cli)
 
-```shell
+```sh
 wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash
 dapr init # stand alone
 docker network create dapr-network && dapr init --network dapr-network # docker
 dapr init --kubernetes # k8s
+```
+
+### Terraform
+
+```sh
+sudo apt-get install unzip
+wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
+unzip terraform_0.12.24_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
 ```
 
 ## Cloud Tools
@@ -203,7 +212,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -P $ZSH_CUSTOM/themes/
 ```
 
-Modify config file (~/.zshrc)
+Modify config file `~/.zshrc`
 
 ```text
 ZSH_THEME="bullet-train"
@@ -211,6 +220,23 @@ ZSH_THEME="bullet-train"
 
 ### Auto completion with Oh my zsh plugins
 
-```config
-plugins=(git docker docker-compose dotnet helm kubectl)
+```text
+plugins=(git docker docker-compose dotnet helm kubectl terraform)
+```
+
+### Migrate Ruby env and Pyenv configurations
+
+```text
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Ruby Env
+export PATH="$HOME/.rbenv/bin:$PATH"
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 ```
