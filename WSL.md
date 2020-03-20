@@ -186,3 +186,31 @@ gcloud init
 sudo pip install awscli
 aws configure
 ```
+
+## ZSH
+
+### Windows Setup
+
+Customize Terminal.exe first
+[See](https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx)
+
+### ZSH Setup in WSL
+
+```sh
+sudo apt-get install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# change theme to something
+wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -P $ZSH_CUSTOM/themes/
+```
+
+Modify config file (~/.zshrc)
+
+```text
+ZSH_THEME="bullet-train"
+```
+
+### Auto completion with Oh my zsh plugins
+
+```config
+plugins=(git docker docker-compose dotnet helm kubectl)
+```

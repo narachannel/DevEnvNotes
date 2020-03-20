@@ -49,6 +49,7 @@ docker run -d --name mongo-container -p 27017:27017 `
 
 ```sh
 docker run -d --name redisdocker -p 6379:6379 redis
+sudo apt-get install redis-server
 ```
 
 ## Azure Storage with Azurite

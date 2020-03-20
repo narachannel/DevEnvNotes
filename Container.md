@@ -7,6 +7,11 @@
 ### Helm on Desktop
 
 ```sh
+source <(helm completion bash)
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
+```sh
 helm init
 helm repo update
 helm install packagename
