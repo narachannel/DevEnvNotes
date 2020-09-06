@@ -113,7 +113,11 @@ If you've already been trying Windows Insider build version, WSL 2 is available.
 [Official](https://helm.sh/docs/intro/install/)
 
 ```sh
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
 ```
 
 ### Istio
@@ -162,10 +166,10 @@ dapr init --kubernetes # k8s
 ### Terraform
 
 ```sh
-sudo apt-get install unzip
-wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
-unzip terraform_0.12.24_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install terraform
+terraform -install-autocomplete
 ```
 
 ## Cloud Tools

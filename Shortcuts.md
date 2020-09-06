@@ -9,3 +9,6 @@
 ## Rider / Golang with Emacs
 
 ## VS Code
+
+- Choose line : `Ctrl` + `l`
+- Choose all searching words : `Enter` + `Alt`
