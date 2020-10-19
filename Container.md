@@ -104,7 +104,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/
 kubectl -n kube-system edit service kubernetes-dashboard
 ```
 
-```diff:kybernetes-dashboard.yaml
+```diff:kubernetes-dashboard.yaml
 ...
 spec:
   clusterIP: 10.99.127.230
@@ -131,4 +131,12 @@ openssl req -nodes -newkey rsa:2048 -keyout ./.certs/dashboard.key -out ./.certs
 openssl x509 -req -sha256 -days 365 -in ./.certs/dashboard.csr -signkey ./.certs/dashboard.key -out ./.certs/dashboard.crt
 kubectl create secret generic kubernetes-dashboard-certs --from-file=certs -n kube-system
 kubectl create -f kubernetes-dashboard.yaml
+```
+
+## Command Tips
+
+### Tail Command logs
+
+```sh
+kubectl logs podname -n ns --tail 1 -f
 ```

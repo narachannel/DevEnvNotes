@@ -147,9 +147,8 @@ docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/wo
 [Page](https://skaffold.dev/docs/install/)
 
 ```sh
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
-chmod +x skaffold
-sudo mv skaffold /usr/local/bin
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+sudo install skaffold /usr/local/bin/
 ```
 
 ### Dapr
