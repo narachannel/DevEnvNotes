@@ -3,6 +3,7 @@
 ## Official
 
 [Github](https://github.com/microsoft/terminal)
+
 [Microsoft Docs](https://docs.microsoft.com/windows/terminal)
 
 ## Winget
@@ -42,9 +43,14 @@ Import-Module PSKubectlCompletion
 Register-KubectlCompletion
 ```
 
+[Github](https://github.com/tillig/ps-bash-completions)
+
+This will also work
+
 ## Command Completion for dotnet
 
 [Scott Hanselman's article](https://www.hanselman.com/blog/command-line-tab-completion-for-net-core-cli-in-powershell-or-bash)
+
 [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/register-argumentcompleter?view=powershell-7)
 
 ```ps1
@@ -60,6 +66,12 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 
 ```ps1
 Install-Module -Name Az -AllowClobber -Scope AllUsers
+```
+
+## Remove redundant user name
+
+```ps1
+$global:DefaultUser = [System.Environment]::UserName
 ```
 
 ## Profile Example
