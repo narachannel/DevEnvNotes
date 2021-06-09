@@ -77,7 +77,13 @@ Install-Module -Name Az -AllowClobber -Scope AllUsers
 ## Remove redundant user name
 
 ```ps1
-$global:DefaultUser = [System.Environment]::UserName
+$env:POSH_SESSION_DEFAULT_USER = [System.Environment]::UserName
+```
+
+## Enable Posh Git
+
+```ps1
+$env:POSH_GIT_ENABLED = $true
 ```
 
 ## Profile Example
