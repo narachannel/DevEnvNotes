@@ -1,9 +1,11 @@
 # Develop Environment Notes
 
-## Containers
+[Containers](./Container.md)
 
-## WSL / Linux set up scripts
+[WSL / Linux set up scripts](./WSL.md)
 
-## Middleware
+[Middleware](./Middleware.md)
 
-## Shortcuts
+[Shortcuts](./Shortcuts.md)
+
+[Windows](./WindowsTerminal.md)

@@ -6,6 +6,12 @@
 
 [Microsoft Docs](https://docs.microsoft.com/windows/terminal)
 
+## Before installation
+
+- Git for windows [Donwload](https://gitforwindows.org/)
+- Nerd Font [Download](https://www.nerdfonts.com/font-downloads)
+- PowerShell Core [Github](https://github.com/PowerShell/PowerShell/releases)
+
 ## Winget
 
 [Github](https://github.com/microsoft/winget-cli)
