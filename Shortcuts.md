@@ -13,5 +13,6 @@
 
 ## Windows Terminal
 
+- Command palette : `Ctrl` + `Shift` + `p`
 - Clear line : `Ctrl` + `u`
 - Copy : `Ctrl` + `y`
