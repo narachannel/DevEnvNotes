@@ -20,7 +20,7 @@
 
 [Github](https://github.com/JanDeDobbeleer/oh-my-posh)
 
-```ps1
+```powershell
 Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
 ```
 
@@ -28,8 +28,14 @@ Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
 
 [Github](https://github.com/dahlbyk/posh-git)
 
-```ps1
+```powershell
 Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
+```
+
+Enable Posh Git
+
+```powershell
+$env:POSH_GIT_ENABLED = $true
 ```
 
 ## Command Completion for Kubernetes
@@ -38,13 +44,13 @@ Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
 
 Install the module first
 
-```ps1
+```powershell
 Install-Module -Name PSKubectlCompletion
 ```
 
 Write these lines to `$profile`
 
-```ps1
+```powershell
 Import-Module PSKubectlCompletion
 Register-KubectlCompletion
 ```
@@ -59,7 +65,7 @@ This will also work
 
 [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/register-argumentcompleter?view=powershell-7)
 
-```ps1
+```powershell
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)
         dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
@@ -70,25 +76,36 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 
 ## Azure Powershell
 
-```ps1
+```powershell
 Install-Module -Name Az -AllowClobber -Scope AllUsers
 ```
 
 ## Remove redundant user name
 
-```ps1
+```powershell
 $env:POSH_SESSION_DEFAULT_USER = [System.Environment]::UserName
 ```
 
-## Enable Posh Git
+## PSReadline and configuration
 
-```ps1
-$env:POSH_GIT_ENABLED = $true
+See [this blog post](https://www.hanselman.com/blog/adding-predictive-intellisense-to-my-windows-terminal-powershell-prompt-with-psreadline)
+
+```powershell
+Install-Module PSReadLine -AllowPrerelease -Force
+```
+
+Add these lines to $PROFILE
+
+```powershell
+Install-Module PSReadLine -AllowPrerelease -Force
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
 ```
 
 ## Profile Example
 
-```ps1
+```powershell
 Set-Alias k kubectl.exe
 Set-Alias code code-insiders.cmd
 Set-Alias which gcm
@@ -100,6 +117,13 @@ Import-Module PSKubectlCompletion
 Register-KubectlCompletion
 # Import-Module Az # This will take a few seconds
 Set-Theme Agnoster
+Install-Module PSReadLine -AllowPrerelease -Force
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+
+$env:POSH_SESSION_DEFAULT_USER = [System.Environment]::UserName
+$env:POSH_GIT_ENABLED = $true
 
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)

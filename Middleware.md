@@ -3,7 +3,10 @@
 ## SQL Server on Docker with persistent volume
 
 ```sh
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd" -p 1433:1433 --name dockersql -v "C:\ContainerData\mssql:/var/opt/mssql"  -d mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+$VOLUME_DIRECTORY='' # Volume directory on WSL2
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd" -p 1433:1433 --name dockersql -v "$VOLUME_DIRECTORY:/var/opt/mssql"  -d mcr.microsoft.com/mssql/server:2019-CU11-ubuntu-20.04
+
+sudo chown 10001 $VOLUME_DIRECTORY # Docker file specifies this uid as mssql user
 ```
 
 ```sql
@@ -96,4 +99,4 @@ docker-compose up -d
 
 ## Cockroach DB
 
-[Official](https://www.cockroachlabs.com/docs/stable/start-a-local-cluster-in-docker.html)
+[Official](https://www.cockroachlabs.com/docs/stable/orchestrate-a-local-cluster-with-kubernetes)
