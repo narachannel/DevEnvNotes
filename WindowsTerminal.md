@@ -106,6 +106,9 @@ Set-PSReadLineOption -EditMode Windows
 ## Profile Example
 
 ```powershell
+using namespace System.Management.Automation
+using namespace System.Management.Automation.Language
+
 Set-Alias k kubectl.exe
 Set-Alias code code-insiders.cmd
 Set-Alias which gcm
@@ -114,10 +117,11 @@ Set-Alias grep select-string
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module PSKubectlCompletion
+Import-Module PSReadLine
 Register-KubectlCompletion
 # Import-Module Az # This will take a few seconds
-Set-Theme Agnoster
-Install-Module PSReadLine -AllowPrerelease -Force
+Set-PoshPrompt -Theme ~/PowerShell/.oh-my-posh.omp.json
+
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
@@ -131,4 +135,6 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
         }
 }
+
+## dapr completion powershell >> $PROFILE
 ```

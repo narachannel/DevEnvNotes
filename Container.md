@@ -140,3 +140,9 @@ kubectl create -f kubernetes-dashboard.yaml
 ```sh
 kubectl logs podname -n ns --tail 1 -f
 ```
+
+### Delete all resources in specific namespace
+
+```sh
+kubectl delete all --all -n {namespace}
+```
