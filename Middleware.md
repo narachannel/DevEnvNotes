@@ -100,3 +100,17 @@ docker-compose up -d
 ## Cockroach DB
 
 [Official](https://www.cockroachlabs.com/docs/stable/orchestrate-a-local-cluster-with-kubernetes)
+
+How to install on local Kubernetes cluster
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/config/crd/bases/crdb.cockroachlabs.com_crdbclusters.yaml
+kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/manifests/operator.yaml
+curl -O https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/examples/example.yaml
+kubectl apply -f example.yaml
+kubectl create \
+-f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/master/examples/client-secure-operator.yaml
+kubectl exec -it cockroachdb-client-secure -- ./cockroach sql --certs-dir=/cockroach/cockroach-certs --host=cockroachdb-public
+# Run Some SQL to create dattabase, grant user, etc.
+kubectl port-forward service/cockroachdb-public 8080 26257
+```

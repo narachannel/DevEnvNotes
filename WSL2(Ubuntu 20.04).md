@@ -105,3 +105,14 @@ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt
 sudo apt-get update
 sudo apt-get install helm
 ```
+
+### Skaffold
+
+[Page](https://skaffold.dev/docs/install/)
+
+```shell
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+sudo install skaffold /usr/local/bin/
+echo 'source <(skaffold completion zsh)' >> ~/.zshrc
+```
+
