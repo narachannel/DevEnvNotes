@@ -2,6 +2,6 @@
 
 ## Get all command history
 
-```pwsh
+```powershell
 cat (Get-PSReadlineOption).HistorySavePath
 ```

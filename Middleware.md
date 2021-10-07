@@ -2,7 +2,7 @@
 
 ## SQL Server on Docker with persistent volume
 
-```sh
+```shell
 $VOLUME_DIRECTORY='' # Volume directory on WSL2
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd" -p 1433:1433 --name dockersql -v "$VOLUME_DIRECTORY:/var/opt/mssql"  -d mcr.microsoft.com/mssql/server:2019-CU11-ubuntu-20.04
 
@@ -42,7 +42,7 @@ select * from block
 
 ## Mongo DB
 
-```sh
+```powershell
 docker run -d --name mongo-container -p 27017:27017 `
 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin `
 -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
@@ -50,7 +50,7 @@ docker run -d --name mongo-container -p 27017:27017 `
 
 ## Redis
 
-```sh
+```shell
 docker run -d --name redisdocker -p 6379:6379 redis
 sudo apt-get install redis-server
 ```
@@ -62,7 +62,7 @@ sudo apt-get install redis-server
 [Tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html)
 [API Reference](https://www.rabbitmq.com/dotnet-api-guide.html#major-api-elements)
 
-```sh
+```shell
 docker run -d --hostname dockerrabbit --name dockerrabbit -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ```
 
@@ -70,7 +70,7 @@ Go to [management](http://localhost:15672). You can log in with `guest / guest`
 
 ## Neo4j
 
-```sh
+```shell
 docker run -p 7474:7474 -p 7687:7687 --volume="C:\ContainerData\neo4j:/data" neo4j
 ```
 
@@ -79,7 +79,7 @@ docker run -p 7474:7474 -p 7687:7687 --volume="C:\ContainerData\neo4j:/data" neo
 [Official](http://cassandra.apache.org/doc/latest/getting_started/index.html)
 [Docker Hub](https://hub.docker.com/_/cassandra?tab=description)
 
-```sh
+```shell
 docker run --name docker-cassandra -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 -d cassandra:latest
 ```
 
@@ -93,7 +93,7 @@ default username : cassandra / password : cassandra
 
 Clone repo from [Github](https://github.com/wurstmeister/kafka-docker)
 
-```sh
+```shell
 docker-compose up -d
 ```
 
@@ -103,7 +103,7 @@ docker-compose up -d
 
 How to install on local Kubernetes cluster
 
-```sh
+```shell
 kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/config/crd/bases/crdb.cockroachlabs.com_crdbclusters.yaml
 kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/manifests/operator.yaml
 curl -O https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.1.0/examples/example.yaml
