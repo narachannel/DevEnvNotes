@@ -86,6 +86,8 @@ https://www.spinnaker.io/
 kubectl.exe config set-context --current --namespace=default
 ```
 
+Use Kubens and Kubectx [Github](https://github.com/ahmetb/kubectx)
+
 ## Network between containers on Dokcer
 
 ```sh

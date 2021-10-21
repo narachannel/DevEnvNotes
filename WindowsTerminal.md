@@ -126,8 +126,10 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
+# Environment variables
 $env:POSH_SESSION_DEFAULT_USER = [System.Environment]::UserName
 $env:POSH_GIT_ENABLED = $true
+$env:KUBE_EDITOR = 'code-insiders.cmd -w'
 
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)
