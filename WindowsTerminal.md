@@ -97,7 +97,7 @@ Install-Module PSReadLine -AllowPrerelease -Force
 Add these lines to $PROFILE
 
 ```powershell
-Install-Module PSReadLine -AllowPrerelease -Force
+Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows

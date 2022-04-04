@@ -224,7 +224,7 @@ ZSH_THEME="bullet-train"
 ### Auto completion with Oh my zsh plugins
 
 ```text
-plugins=(git docker docker-compose dotnet helm kubectl terraform)
+plugins=(git docker docker-compose dotnet helm kubectl terraform history-substring-search)
 ```
 
 ### Migrate Ruby env and Pyenv configurations
