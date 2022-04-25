@@ -2,12 +2,12 @@
 
 ## Install / Upgrade
 
-Download CLI from [github](https://github.com/dapr/cli/releases/) and replace with the new one 
+Download CLI from [github](https://github.com/dapr/cli/releases/) and replace with the new one
 
 ```shell
 dapr uninstall --all
-dapr init --runtime-version=1.6.0
-dapr upgrade --runtime-version 1.6.0 -k
+dapr init --runtime-version=1.7.2
+dapr upgrade --runtime-version 1.7.2 -k
 dapr --version
 ```
 
