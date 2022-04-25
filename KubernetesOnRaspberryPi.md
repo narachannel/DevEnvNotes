@@ -1,3 +1,5 @@
+# Kubernetes on RaspberryPi
+
 ## Network
 
 - Top : k8s1
@@ -84,8 +86,8 @@ sudo kubeadm join k8s1:6443 --token hyokru.cdcdepvu6e44xlz5 \
 - Register host name and ip pairs to `C:\Windows\System32\drivers\etc`
 - Download config to local
 - Merge config files accordingly
-- 
-- ```powershell
+
+```powershell
 gsudo -w notepad c:\\Windows\system32\drivers\etc\hosts
 ```
 
@@ -95,11 +97,11 @@ scp ubuntu@k8s1:~/.kube/config .\.kube\
 
 ## Addons
 
-https://kubernetes.io/docs/concepts/cluster-administration/addons/
+[link](https://kubernetes.io/docs/concepts/cluster-administration/addons/)
 
 ## Renew certificates on Kubernetes
 
-https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/
+[link](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/)
 
 ```powershell
 journalctl -xeu kubelet
@@ -151,4 +153,8 @@ sudo kubeadm certs generate-csr --kubeconfig-dir ~/cert --cert-dir ~/cert/pki
 
 ## MetalLB
 
+[installation](https://metallb.universe.tf/installation/)
+
 ## Mount drive and assign as PV
+
+[Qiita](https://qiita.com/reireias/items/76a22b938f1d3f829f8d)
