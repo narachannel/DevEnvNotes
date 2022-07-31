@@ -55,6 +55,29 @@ docker run -d --name redisdocker -p 6379:6379 redis
 sudo apt-get install redis-server
 ```
 
+## MySQL
+
+```shell
+docker run --name dockermysql -v /home/narachannel/ContainerData/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Passw0rd! -d -p 3306:3306 -p 33060:33060 mysql:latest 
+```
+
+Be careful with `-p` location. `-p` can be recognized as MySQL's command line option.
+
+```txt
+2022-07-31 14:31:27+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.30-1.el8 started.
+2022-07-31 14:31:27+00:00 [ERROR] [Entrypoint]: mysqld failed while attempting to check config
+        command was: mysqld -p 3306:3306 --verbose --help --log-bin-index=/tmp/tmp.dwUYhZoebN
+        Enter password: mysqld: Can not perform keyring migration : Invalid --keyring-migration-source option.
+2022-07-31T14:31:27.436424Z 0 [ERROR] [MY-011084] [Server] Keyring migration failed.
+2022-07-31T14:31:27.437251Z 0 [ERROR] [MY-010119] [Server] Aborting
+```
+
+```sql
+create database newdb;
+use newdb;
+create table newtable;
+```
+
 ## Azure Storage with Azurite
 
 ## RabbitMQ
