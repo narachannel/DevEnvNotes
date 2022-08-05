@@ -6,6 +6,7 @@
 - Google Japanese Input
 - Jetbrains Toolbox
 - Visual Studio Code
+- Install Nerd Font
 
 ## Install via Apple Store
 
@@ -20,6 +21,7 @@ git config --global user.email "koji@narachannel.com"
 ssh-keygen -t ed25519
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 softwareupdate --install-rosetta
 ```
 
@@ -72,8 +74,17 @@ path=(
   /Users/narachannel/Library/Application Support/JetBrains/Toolbox/scripts
 )
 
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+plugins=(git brew kubectl history-substring-search)
+
 alias code="code-insiders"
 alias k="kubectl"
+alias python="python3"
+alias pip="pip3"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 #ZSH Autocomplete
 if type brew &>/dev/null; then
