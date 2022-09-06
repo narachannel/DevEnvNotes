@@ -21,7 +21,7 @@
 [Github](https://github.com/JanDeDobbeleer/oh-my-posh)
 
 ```powershell
-Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
+winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
 ## Posh-Git
@@ -115,12 +115,11 @@ Set-Alias which gcm
 Set-Alias tig  'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias grep select-string
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module PSKubectlCompletion
 Import-Module PSReadLine
 Register-KubectlCompletion
 # Import-Module Az # This will take a few seconds
-Set-PoshPrompt -Theme ~/PowerShell/.oh-my-posh.omp.json
+oh-my-posh init pwsh | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
