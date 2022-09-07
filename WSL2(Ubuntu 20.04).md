@@ -15,7 +15,6 @@ source ~/.zshrc
 
 ```shell
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 ```
 
 ## Programing Language
