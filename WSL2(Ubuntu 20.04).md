@@ -15,7 +15,9 @@ source ~/.zshrc
 
 ```shell
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
+plugins=(history-substring-search git docker docker-compose dotnet helm kubectl terraform zsh-autosuggestions)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+source $ZSH/oh-my-zsh.sh
 ```
 
 ## Programing Language

@@ -38,6 +38,12 @@ Enable Posh Git
 $env:POSH_GIT_ENABLED = $true
 ```
 
+## Git Aliases
+
+```powershell
+Install-Module git-aliases -Scope CurrentUser -AllowClobber
+```
+
 ## Command Completion for Kubernetes
 
 [GitHub](https://github.com/mziyabo/PSKubectlCompletion)
