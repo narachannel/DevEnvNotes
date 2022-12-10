@@ -17,7 +17,7 @@
 git config --global user.name "Koji Narazaki"
 git config --global user.email "koji@narachannel.com"
 ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519 | pbcopy
+cat ~/.ssh/id_ed25519.pub | pbcopy # Or 'gh ssh-key add ~/.ssh/id_ed25519.pub -t Mac' after login
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -59,6 +59,8 @@ brew install awscli
 brew tap aws/tap
 brew install aws-sam-cli
 arch -arm64 brew install dapr/tap/dapr-cli
+brew install --cask graalvm/tap/graalvm-ce-java17
+xattr -r -d com.apple.quarantine "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
 ```
 
 ## Oh-My-Zsh configuration
@@ -82,8 +84,10 @@ path=(
 
 export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 plugins=(git brew kubectl history-substring-search)
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0/Contents/Home 
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin:${GRAALVM_HOME}/bin"
 
 alias code="code-insiders"
 alias k="kubectl"
