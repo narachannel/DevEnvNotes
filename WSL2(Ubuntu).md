@@ -1,4 +1,4 @@
-# Install script for Ubuntu 20.04
+# Install script for WSL(Ubuntu)
 
 ## Global
 

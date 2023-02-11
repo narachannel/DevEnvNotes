@@ -9,3 +9,5 @@
 [Shortcuts](./Shortcuts.md)
 
 [Windows](./WindowsTerminal.md)
+
+[Mac](./MacSetup.md)
