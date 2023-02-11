@@ -14,10 +14,6 @@
 ## Via Command line
 
 ```shell
-git config --global user.name "Koji Narazaki"
-git config --global user.email "koji@narachannel.com"
-ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub | pbcopy # Or 'gh ssh-key add ~/.ssh/id_ed25519.pub -t Mac' after login
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -43,7 +39,8 @@ brew install zsh-completions
 source ~/.zshrc
 rm -f ~/.zcompdump; compinit
 brew install --cask google-japanese-ime
-brew install zsh-autosuggestions
+brew install zsh-autosuggestions zsh
+brew install zsh-syntax-highlighting
 brew install --cask docker
 brew install --cask devtoys
 brew install --cask corretto
@@ -56,11 +53,14 @@ brew install golang
 brew install node
 brew install gh
 brew install awscli
+brew install kubectx
+brew install k9s
 brew tap aws/tap
 brew install aws-sam-cli
 arch -arm64 brew install dapr/tap/dapr-cli
 brew install --cask graalvm/tap/graalvm-ce-java17
 xattr -r -d com.apple.quarantine "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
+echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 ```
 
 ## Oh-My-Zsh configuration
@@ -104,6 +104,16 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+```
+
+## Git configuration
+
+```zsh
+git config --global user.name "Koji Narazaki"
+git config --global user.email "koji@narachannel.com"
+ssh-keygen -t ed25519
+gh auth login
+gh ssh-key add ~/.ssh/id_ed25519.pub -t Mac'
 ```
 
 ## PowerShell Installation
