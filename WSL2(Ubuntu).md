@@ -8,6 +8,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+sudo apt install apache2-utils
 source ~/.zshrc
 ```
 
@@ -15,7 +17,7 @@ source ~/.zshrc
 
 ```shell
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(history-substring-search git docker docker-compose dotnet helm kubectl terraform zsh-autosuggestions)
+plugins=(git docker docker-compose dotnet helm kubectl terraform fast-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 ```
@@ -25,19 +27,18 @@ source $ZSH/oh-my-zsh.sh
 ### Dotnet
 
 ```shell
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update; \
-  sudo apt-get install -y apt-transport-https && \
-  sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-5.0
+rm packages-microsoft-prod.deb
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-7.0
 ```
 
 ### Go
 
 ```shell
-wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.20.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 go version
 ```
@@ -45,12 +46,11 @@ go version
 ### Node.js
 
 ```shell
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
+chmod +x nodesource_setup.sh
+sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
-sudo apt-get install gcc g++ make
-curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
+rm nodesource_setup.sh
 ```
 
 ### Deno
@@ -140,4 +140,28 @@ sudo apt-get install helm
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
 sudo install skaffold /usr/local/bin/
 echo 'source <(skaffold completion zsh)' >> ~/.zshrc
+```
+
+### Github CLI
+
+```shell
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+```
+
+### JDK
+
+```
+wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+sudo apt-get update; sudo apt-get install -y java-17-amazon-corretto-jdk
+```
+
+### Dapr
+
+```shell
+wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash
 ```
