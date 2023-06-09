@@ -17,6 +17,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/plugins/zsh-autocomplete
 softwareupdate --install-rosetta
 ```
 
@@ -39,7 +40,7 @@ brew install zsh-completions
 source ~/.zshrc
 rm -f ~/.zcompdump; compinit
 brew install --cask google-japanese-ime
-brew install zsh-autosuggestions zsh
+brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install --cask docker
 brew install --cask devtoys
@@ -55,10 +56,12 @@ brew install gh
 brew install awscli
 brew install kubectx
 brew install k9s
+brew install pyenv
 brew tap aws/tap
 brew install aws-sam-cli
 arch -arm64 brew install dapr/tap/dapr-cli
 brew install --cask graalvm/tap/graalvm-ce-java17
+brew install knative/client/kn
 xattr -r -d com.apple.quarantine "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
 echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 ```
@@ -91,8 +94,9 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin:${GRAALVM_HOME}/bin"
 
 alias code="code-insiders"
 alias k="kubectl"
-alias python="python3"
-alias pip="pip3"
+
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
