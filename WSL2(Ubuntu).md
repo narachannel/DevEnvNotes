@@ -20,9 +20,17 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git docker docker-compose dotnet helm kubectl terraform fast-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
+exec zsh
 ```
 
-## Programing Language
+## Git
+
+```shell
+git config --global user.name "Koji Narazaki"
+git config --global user.email "koji@narachannel.com"
+```
+
+## Programing Languages
 
 ### Dotnet
 
@@ -88,6 +96,10 @@ pyenv global 3.10.0
 ```
 
 ## Tools
+
+### Docker Desktop for Windows
+
+Go `Resources` > `WSL Integration` > `Enable integration with additional distros` to enable `kubectl` on the WSL distribution.
 
 ### Azure Functions
 
