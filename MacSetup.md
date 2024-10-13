@@ -44,12 +44,13 @@ brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install --cask docker
 brew install --cask devtoys
-brew install --cask corretto
+brew install --cask corretto@21
 brew install helm
 brew install skaffold
 brew install --cask dotnet-sdk
 brew install mono-libgdiplus # https://docs.microsoft.com/en-us/dotnet/core/install/macos#libgdiplus
-brew install terraform
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform hashicorp/tap/vault
 brew install golang
 brew install node
 brew install gh
@@ -60,9 +61,9 @@ brew install pyenv
 brew tap aws/tap
 brew install aws-sam-cli
 arch -arm64 brew install dapr/tap/dapr-cli
-brew install --cask graalvm/tap/graalvm-ce-java17
+# brew install --cask graalvm/tap/graalvm-ce-java17
 brew install knative/client/kn
-xattr -r -d com.apple.quarantine "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
+# xattr -r -d com.apple.quarantine "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
 echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 ```
 
@@ -105,8 +106,10 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source <(kubectl completion zsh)
+  autoload bashcompinit && bashcompinit
   autoload -Uz compinit
   compinit
+  complete -C '/opt/homebrew/bin/aws_completer' aws
 fi
 ```
 
