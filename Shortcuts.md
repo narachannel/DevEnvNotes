@@ -10,6 +10,7 @@
 
 - Choose line : `Ctrl` + `l`
 - Choose all searching words : `Enter` + `Alt`
+- Jump to Terminal: `Ctrl` + `` ` ``, Back to editor: `Ctrl` + `1`
 
 ## Windows Terminal
 

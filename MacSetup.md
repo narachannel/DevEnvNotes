@@ -96,6 +96,10 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin:${GRAALVM_HOME}/bin"
 alias code="code-insiders"
 alias k="kubectl"
 
+HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+HISTSIZE=-1
+CDPATH=$HOME/Development
+
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 

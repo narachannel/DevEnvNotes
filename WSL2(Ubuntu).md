@@ -21,6 +21,9 @@ plugins=(git docker docker-compose dotnet helm kubectl terraform fast-syntax-hig
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 exec zsh
+
+HISTOCONTROL=ignoredups:erasedups
+HISTOSIZE=-1
 ```
 
 ## Git
